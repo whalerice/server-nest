@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, HttpCode } from '@nestjs/common';
 
 @Controller()
 export class AppController {
@@ -9,6 +9,7 @@ export class AppController {
     return '서버 샘플 시작';
   }
   @Get('api/v1/app/health')
+  @HttpCode(200)
   health() {
     return 'OK';
   }

@@ -4,7 +4,7 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: ['https://sooni-r.vercel.app', 'http://localhost:3300'],
+    origin: true,
     credentials: true,
     // exposedHeaders: ['Authorization'], // * 사용할 헤더 추가.
   });
