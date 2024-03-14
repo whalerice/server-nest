@@ -12,7 +12,7 @@ export class UsersController {
     return this.usersService.getAll();
   }
 
-  @Post('/login')
+  @Post('login')
   @HttpCode(200)
   async login(@Body() loginDto: LoginDto) {
     return this.usersService.findOne(loginDto);
