@@ -8,4 +8,8 @@ export class AppController {
   home(): string {
     return '서버 샘플 시작';
   }
+  @Get('api/v1/app/health')
+  health() {
+    return 'OK';
+  }
 }
