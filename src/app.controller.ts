@@ -8,7 +8,7 @@ export class AppController {
   home(): string {
     return '서버 샘플 시작';
   }
-  @Get('api/v1/app/health')
+  @Get('api/app/health')
   @HttpCode(200)
   health() {
     return { result: 'OK' };
