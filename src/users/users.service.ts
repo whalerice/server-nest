@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable, Req } from '@nestjs/common';
-import { User } from '../entities/users.entity';
+import { User } from './users.entity';
 
 @Injectable()
 export class UsersService {
