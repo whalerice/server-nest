@@ -1,16 +1,25 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Auth {
   @PrimaryGeneratedColumn()
-  MBR_SEQ: number;
+  id: number;
 
   @Column({ type: 'varchar' })
-  MBR_ID: string;
+  loginId: string;
 
   @Column({ type: 'varchar' })
-  MBR_PWD: string;
+  password: string;
 
-  @Column({ type: 'datetime' })
-  REG_DTM: Date;
+  @CreateDateColumn({ type: 'datetime' })
+  createdAt: Date;
+
+  @DeleteDateColumn({ type: 'datetime' })
+  deletedAt: Date;
 }
