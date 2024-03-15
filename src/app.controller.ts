@@ -11,6 +11,6 @@ export class AppController {
   @Get('api/v1/app/health')
   @HttpCode(200)
   health() {
-    return 'OK';
+    return { result: 'OK' };
   }
 }
