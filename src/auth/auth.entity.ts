@@ -11,8 +11,14 @@ export class Auth {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ type: 'bool' })
+  use: boolean;
+
+  @Column({ type: 'uuid' })
+  useKey: string;
+
   @Column({ type: 'varchar' })
-  loginId: string;
+  email: string;
 
   @Column({ type: 'varchar' })
   password: string;
