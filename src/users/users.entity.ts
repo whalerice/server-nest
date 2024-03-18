@@ -39,3 +39,42 @@ export class User {
     label?: string;
   };
 }
+
+export class Company {
+  id: number;
+  registrationNumber: string;
+  registrationNumberSub: string;
+  documentFile?: string;
+  companyName: string;
+  homepageUrl: string;
+  address: string;
+  addressDetail: string;
+  companyTel: string;
+  adminId: string;
+  contractStartDate?: string;
+  contractEndDate?: string;
+  isActive: boolean;
+  creator: string;
+  createdAt: string;
+  updater?: string;
+  updatedAt?: string;
+  serviceType: string;
+  serviceTypeName: string;
+  user: {
+    loginId: string;
+    name: string;
+    tel: string;
+  };
+}
+export class Team {
+  createdAt: string;
+  id: number;
+  name: string;
+  description: string;
+  agentCount: number;
+  bot: {
+    id: string;
+  };
+  teamMaxCapacity: number;
+  outerUrl: boolean;
+}
