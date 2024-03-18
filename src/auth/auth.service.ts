@@ -1,23 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Auth } from './auth.entity';
+import { AuthEntity } from './auth.entity';
 import { Repository } from 'typeorm';
+import { IUseAuth } from './auth.enums';
 
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectRepository(Auth)
-    private authRepository: Repository<Auth>,
+    @InjectRepository(AuthEntity)
+    private authRepository: Repository<AuthEntity>,
   ) {}
 
-  async create(auth: Auth): Promise<Auth> {
-    console.log(auth);
-
-    const newAuth = this.authRepository.create(auth);
-    return await this.authRepository.save(newAuth);
+  async create(auth: AuthEntity): Promise<any> {
+    const newAuth = this.authRepository.create({ ...auth, use: IUseAuth.USED });
+    await this.authRepository.save(newAuth);
+    return 'ok';
   }
 
-  async findAll(): Promise<Auth[]> {
+  async findAll(): Promise<AuthEntity[]> {
     return this.authRepository.find();
   }
 

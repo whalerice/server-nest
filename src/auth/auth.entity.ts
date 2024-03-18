@@ -1,31 +1,41 @@
 import {
+  BaseEntity,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { IUseAuth } from './auth.enums';
 
-@Entity()
-export class Auth {
-  @PrimaryGeneratedColumn()
-  id: number;
+@Entity({ name: 'users' })
+export class AuthEntity extends BaseEntity {
+  @PrimaryGeneratedColumn('uuid', { comment: '유저 UUID' })
+  key: string;
 
-  @Column({ type: 'bool' })
-  use: boolean;
+  @Column({
+    type: 'enum',
+    comment: '사용여부',
+    enum: IUseAuth,
+    nullable: false,
+  })
+  use: IUseAuth;
 
-  @Column({ type: 'uuid' })
-  useKey: string;
+  @Column({
+    type: 'varchar',
+    length: 100,
+    unique: true,
+    nullable: false,
+    comment: '로그인 이메일 아이디',
+  })
+  email!: string;
 
-  @Column({ type: 'varchar' })
-  email: string;
+  @Column({ type: 'varchar', length: 100, comment: '비밀번호' })
+  password!: string;
 
-  @Column({ type: 'varchar' })
-  password: string;
+  @CreateDateColumn({ type: 'timestamp', comment: '등록시간' })
+  createdAt: Date | undefined;
 
-  @CreateDateColumn({ type: 'datetime' })
-  createdAt: Date;
-
-  @DeleteDateColumn({ type: 'datetime' })
-  deletedAt: Date;
+  @DeleteDateColumn({ type: 'timestamp', comment: '삭제시간' })
+  deletedAt: Date | undefined;
 }

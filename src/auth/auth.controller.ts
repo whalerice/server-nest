@@ -1,18 +1,27 @@
-import { Body, Controller, Get, Post, Delete, Param } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Delete,
+  Param,
+  HttpCode,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { Auth } from './auth.entity';
+import { AuthEntity } from './auth.entity';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Get()
-  async findAll(): Promise<Auth[]> {
+  async findAll(): Promise<AuthEntity[]> {
     return this.authService.findAll();
   }
 
   @Post('/create')
-  async create(@Body() user: Auth): Promise<Auth> {
+  @HttpCode(200)
+  async create(@Body() user: AuthEntity): Promise<AuthEntity> {
     return await this.authService.create(user);
   }
 

@@ -7,3 +7,11 @@ export class LoginDto {
   @IsString()
   password: string;
 }
+
+export class SignUpDto {
+  @IsString()
+  email: string;
+
+  @IsString()
+  password: string;
+}
